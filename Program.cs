@@ -1,41 +1,36 @@
+using Microsoft.EntityFrameworkCore;
+using Web_BanHang.Models; // Namespace này phải trùng với tên Project của bạn
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// ==========================================
+// 1. ĐĂNG KÝ KẾT NỐI DATABASE
+// ==========================================
+builder.Services.AddDbContext<BanhangdbContext>(options =>
+    options.UseSqlServer("Server=DESKTOP-O8PU7IU\\SQLEXPRESS;Database=BANHANGDB;Trusted_Connection=True;TrustServerCertificate=True;"));
+
+// 2. Đăng ký dịch vụ Controller (để viết API)
+builder.Services.AddControllers();
+
+// 3. Đăng ký Swagger (Giao diện test API)
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// ==========================================
+// 4. CẤU HÌNH PIPELINE (LUỒNG CHẠY)
+// ==========================================
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseAuthorization();
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.MapControllers(); // Quan trọng: Để code tìm thấy các Controller
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
