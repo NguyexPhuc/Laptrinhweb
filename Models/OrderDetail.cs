@@ -5,17 +5,23 @@ namespace Web_BanHang.Models;
 
 public partial class OrderDetail
 {
-    public int OrderDetailId { get; set; }
+    public int Id { get; set; }
 
-    public int? OrderId { get; set; }
+    public int OrderId { get; set; }
 
-    public int? VariantId { get; set; }
+    public int ProductVariantId { get; set; }
+
+    public string SnapshotProductName { get; set; } = null!;
+
+    public string SnapshotSku { get; set; } = null!;
+
+    public string? SnapshotThumbnail { get; set; }
 
     public int Quantity { get; set; }
 
     public decimal UnitPrice { get; set; }
 
-    public virtual Order? Order { get; set; }
+    public virtual Order Order { get; set; } = null!;
 
-    public virtual ProductVariant? Variant { get; set; }
+    public virtual ProductVariant ProductVariant { get; set; } = null!;
 }

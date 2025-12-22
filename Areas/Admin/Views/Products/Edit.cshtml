@@ -1,0 +1,17 @@
+@model Web_BanHang.Models.Product
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit sản phẩm</h2>
+<form method="post" action="/Admin/Products/Edit">
+    <input type="hidden" name="ProductId" value="@Model.ProductId" />
+    <label>Tên</label>
+    <input name="ProductName" value="@Model.ProductName" />
+    <label>Giá</label>
+    <input name="BasePrice" value="@Model.BasePrice" />
+    <label>ImageUrl</label>
+    <input name="ImageUrl" value="@Model.ImageUrl" />
+    <label>Mô tả</label>
+    <textarea name="Description">@Model.Description</textarea>
+    <button type="submit">Lưu</button>
+</form>

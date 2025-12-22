@@ -1,0 +1,25 @@
+@model IEnumerable<Web_BanHang.Models.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Quản lý sản phẩm</h1>
+<p><a class="btn" href="/Admin/Products/Create">Thêm mới</a></p>
+<table>
+<thead><tr><th>Id</th><th>Tên</th><th>Giá</th><th></th></tr></thead>
+<tbody>
+@foreach(var p in Model){
+<tr>
+    <td>@p.ProductId</td>
+    <td>@p.ProductName</td>
+    <td>@p.BasePrice.ToString("C")</td>
+    <td>
+        <a href="/Admin/Products/Edit/@p.ProductId">Edit</a>
+        <form method="post" action="/Admin/Products/Delete" style="display:inline">
+            <input type="hidden" name="id" value="@p.ProductId" />
+            <button type="submit">Delete</button>
+        </form>
+    </td>
+</tr>
+}
+</tbody>
+</table>

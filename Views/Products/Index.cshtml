@@ -1,0 +1,17 @@
+@model IEnumerable<Web_BanHang.Models.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Danh sách sản phẩm</h1>
+<div class="product-grid">
+@foreach(var p in Model){
+    <div class="card">
+        <img src="@p.ImageUrl" alt="@p.ProductName" />
+        <div class="card-body">
+            <h3>@p.ProductName</h3>
+            <p>@p.BasePrice.ToString("C")</p>
+            <a class="btn" href="/Products/Details/@p.ProductId">Xem</a>
+        </div>
+    </div>
+}
+</div>

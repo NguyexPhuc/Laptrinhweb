@@ -5,29 +5,39 @@ namespace Web_BanHang.Models;
 
 public partial class User
 {
-    public int UserId { get; set; }
+    public int Id { get; set; }
 
-    public string Username { get; set; } = null!;
+    public string? Username { get; set; }
 
-    public string PasswordHash { get; set; } = null!;
-
-    public string FullName { get; set; } = null!;
+    public string? PasswordHash { get; set; }
 
     public string Email { get; set; } = null!;
 
+    public string? GoogleId { get; set; }
+
+    public DateOnly? DateOfBirth { get; set; }
+
+    public string FullName { get; set; } = null!;
+
     public string? PhoneNumber { get; set; }
 
-    public int? RoleId { get; set; }
+    public string? AvatarUrl { get; set; }
+
+    public string? Role { get; set; }
+
+    public bool? IsLocked { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
-    public virtual ICollection<Address> Addresses { get; set; } = new List<Address>();
+    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
-    public virtual ICollection<News> News { get; set; } = new List<News>();
+    public virtual ICollection<Coupon> Coupons { get; set; } = new List<Coupon>();
+
+    public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
-    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
+    public virtual ICollection<ProductReview> ProductReviews { get; set; } = new List<ProductReview>();
 
-    public virtual Role? Role { get; set; }
+    public virtual ICollection<UserAddress> UserAddresses { get; set; } = new List<UserAddress>();
 }

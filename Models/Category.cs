@@ -5,11 +5,15 @@ namespace Web_BanHang.Models;
 
 public partial class Category
 {
-    public int CategoryId { get; set; }
+    public int Id { get; set; }
 
-    public string CategoryName { get; set; } = null!;
+    public string Name { get; set; } = null!;
+
+    public string Slug { get; set; } = null!;
 
     public int? ParentId { get; set; }
+
+    public bool? IsActive { get; set; }
 
     public virtual ICollection<Category> InverseParent { get; set; } = new List<Category>();
 

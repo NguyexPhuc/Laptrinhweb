@@ -1,0 +1,10 @@
+@model Web_BanHang.Models.Product
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>@Model.ProductName</h1>
+<div class="product-detail">
+    <img src="@Model.ImageUrl" alt="@Model.ProductName" />
+    <p><strong>Giá:</strong> @Model.BasePrice.ToString("C")</p>
+    <p>@Model.Description</p>
+</div>

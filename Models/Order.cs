@@ -5,25 +5,41 @@ namespace Web_BanHang.Models;
 
 public partial class Order
 {
-    public int OrderId { get; set; }
+    public int Id { get; set; }
+
+    public string OrderCode { get; set; } = null!;
 
     public int? UserId { get; set; }
 
-    public int? VoucherId { get; set; }
+    public DateTime? OrderDate { get; set; }
 
-    public decimal TotalAmount { get; set; }
-
-    public string? Status { get; set; }
+    public string ShippingName { get; set; } = null!;
 
     public string ShippingAddress { get; set; } = null!;
 
-    public string? PaymentMethod { get; set; }
+    public string ShippingPhone { get; set; } = null!;
 
-    public DateTime? CreatedAt { get; set; }
+    public decimal TotalAmount { get; set; }
+
+    public decimal? DiscountAmount { get; set; }
+
+    public string? CouponCode { get; set; }
+
+    public decimal? ShippingFee { get; set; }
+
+    public decimal FinalAmount { get; set; }
+
+    public string PaymentMethod { get; set; } = null!;
+
+    public string? PaymentStatus { get; set; }
+
+    public int? Status { get; set; }
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
-    public virtual User? User { get; set; }
+    public virtual ICollection<OrderStatusHistory> OrderStatusHistories { get; set; } = new List<OrderStatusHistory>();
 
-    public virtual Voucher? Voucher { get; set; }
+    public virtual ICollection<ProductReview> ProductReviews { get; set; } = new List<ProductReview>();
+
+    public virtual User? User { get; set; }
 }
