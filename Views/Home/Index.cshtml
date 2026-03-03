@@ -1,19 +1,141 @@
 @model IEnumerable<Web_BanHang.Models.Product>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "SportStore - Đánh thức sức mạnh";
 }
 
-<h1>Sản phẩm nổi bật</h1>
-<div class="product-grid">
-@foreach (var p in Model)
-{
-    <div class="card">
-        <img src="@p.ImageUrl" alt="@p.ProductName" />
-        <div class="card-body">
-            <h3>@p.ProductName</h3>
-            <p>Giá: @p.BasePrice.ToString("C")</p>
-            <a class="btn" href="/Products/Details/@p.ProductId">Xem</a>
+<div id="sportHeroBanner" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active position-relative">
+            <img src="https://images.unsplash.com/photo-1556817411-31ae72fa3ea8?q=80&w=1920&h=600&fit=crop" class="d-block w-100 object-fit-cover" style="height: 60vh;" alt="Banner Giày Thể Thao">
+            <div class="carousel-caption d-none d-md-block text-start" style="bottom: 25%; left: 8%;">
+                <h1 class="display-3 fw-bolder text-white text-uppercase fst-italic" style="text-shadow: 2px 2px 10px rgba(0,0,0,0.8);">Bứt Phá<br>Mọi Giới Hạn</h1>
+                <p class="fs-4 text-white shadow-sm fw-light">Bộ sưu tập đồ tập luyện & Dinh dưỡng thể thao 2026</p>
+                <a href="/Products" class="btn btn-danger btn-lg text-uppercase fw-bold mt-3 px-5 py-3 rounded-0 shadow-lg">Khám Phá Ngay</a>
+            </div>
         </div>
     </div>
-}
+</div>
+
+<div class="policy-bar bg-light py-4 border-bottom">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 col-6 mb-3 mb-md-0 d-flex flex-column align-items-center">
+                <i class="fa-solid fa-truck-fast mb-2 text-danger fs-2"></i>
+                <h6 class="fw-bold text-uppercase mb-1">Giao hàng siêu tốc</h6>
+                <p class="text-muted small mb-0">Miễn phí đơn từ 1 triệu</p>
+            </div>
+            <div class="col-md-3 col-6 mb-3 mb-md-0 d-flex flex-column align-items-center">
+                <i class="fa-solid fa-shield-halved mb-2 text-danger fs-2"></i>
+                <h6 class="fw-bold text-uppercase mb-1">Hàng Chính Hãng</h6>
+                <p class="text-muted small mb-0">Cam kết 100% Auth</p>
+            </div>
+            <div class="col-md-3 col-6 d-flex flex-column align-items-center">
+                <i class="fa-solid fa-arrow-right-arrow-left mb-2 text-danger fs-2"></i>
+                <h6 class="fw-bold text-uppercase mb-1">Đổi trả 30 ngày</h6>
+                <p class="text-muted small mb-0">Thủ tục nhanh gọn</p>
+            </div>
+            <div class="col-md-3 col-6 d-flex flex-column align-items-center">
+                <i class="fa-solid fa-headset mb-2 text-danger fs-2"></i>
+                <h6 class="fw-bold text-uppercase mb-1">Hỗ trợ 24/7</h6>
+                <p class="text-muted small mb-0">Tư vấn chọn size & đồ tập</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h2 class="sport-heading d-inline-block">MUA SẮM THEO DANH MỤC</h2>
+    </div>
+    <div class="row text-center justify-content-center g-4">
+        <div class="col-6 col-md-2">
+            <a href="/Products/Category/Giay" class="text-decoration-none text-dark category-item">
+                <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=200&h=200&fit=crop" class="category-circle mb-3 shadow-sm" alt="Giày chạy bộ">
+                <h6 class="fw-bold text-uppercase">Giày Chạy Bộ</h6>
+            </a>
+        </div>
+        <div class="col-6 col-md-2">
+            <a href="/Products/Category/QuanAo" class="text-decoration-none text-dark category-item">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=200&h=200&fit=crop" class="category-circle mb-3 shadow-sm" alt="Quần áo tập">
+                <h6 class="fw-bold text-uppercase">Đồ Tập Gym</h6>
+            </a>
+        </div>
+        <div class="col-6 col-md-2">
+            <a href="/Products/Category/DinhDuong" class="text-decoration-none text-dark category-item">
+                <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=200&h=200&fit=crop" class="category-circle mb-3 shadow-sm" alt="Dinh dưỡng">
+                <h6 class="fw-bold text-uppercase">Dinh Dưỡng</h6>
+            </a>
+        </div>
+        <div class="col-6 col-md-2">
+            <a href="/Products/Category/PhuKien" class="text-decoration-none text-dark category-item">
+                <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=200&h=200&fit=crop" class="category-circle mb-3 shadow-sm" alt="Phụ kiện">
+                <h6 class="fw-bold text-uppercase">Phụ Kiện</h6>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container sport-container my-5 pb-4 border-bottom">
+    <div class="d-flex justify-content-between align-items-end mb-4 section-header">
+        <h2 class="sport-heading">SẢN PHẨM MỚI NHẤT</h2>
+        <a href="/Products" class="view-all-link">Xem tất cả &raquo;</a>
+    </div>
+
+    <div class="row g-4">
+        @if(Model != null && Model.Any())
+        {
+            @foreach (var p in Model)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+                    <div class="sport-card h-100">
+                        <div class="product-badge">New</div>
+                        <div class="img-wrapper">
+                            <a href="/Products/Details/@p.ProductId">
+                                <img src="@(string.IsNullOrEmpty(p.ImageUrl) ? "https://via.placeholder.com/400x400?text=No+Image" : p.ImageUrl)" alt="@p.ProductName" class="img-fluid product-img" />
+                            </a>
+                        </div>
+                        <div class="card-info text-center">
+                            <h3 class="product-title">
+                                <a href="/Products/Details/@p.ProductId">@p.ProductName</a>
+                            </h3>
+                            <div class="product-price">@p.BasePrice.ToString("N0") ₫</div>
+                            <div class="action-buttons mt-3 d-flex justify-content-center gap-2">
+                                <a href="/Products/Details/@p.ProductId" class="btn btn-sport-outline w-100">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center py-5">
+                <p class="text-muted">Đang cập nhật sản phẩm...</p>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="container mb-5 pb-5">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="promo-banner shadow-sm position-relative">
+                <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=800&h=400&fit=crop" alt="Promo 1">
+                <div class="position-absolute bottom-0 start-0 p-4 text-white">
+                    <h3 class="fw-bolder text-uppercase fst-italic">Phòng Gym T Tại Gia</h3>
+                    <a href="#" class="text-white fw-bold text-decoration-underline">Mua ngay thiết bị tập</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="promo-banner shadow-sm position-relative">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&h=400&fit=crop" alt="Promo 2">
+                <div class="position-absolute bottom-0 start-0 p-4 text-white">
+                    <h3 class="fw-bolder text-uppercase fst-italic">Ăn Sạch - Sống Khỏe</h3>
+                    <a href="#" class="text-white fw-bold text-decoration-underline">Xem menu dinh dưỡng</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

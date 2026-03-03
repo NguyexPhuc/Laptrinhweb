@@ -1,10 +1,85 @@
-@model Web_BanHang.Models.Product
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Chi tiết sản phẩm";
 }
-<h1>@Model.ProductName</h1>
-<div class="product-detail">
-    <img src="@Model.ImageUrl" alt="@Model.ProductName" />
-    <p><strong>Giá:</strong> @Model.BasePrice.ToString("C")</p>
-    <p>@Model.Description</p>
+
+<div class="container sport-product-detail mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-7 col-md-6 mb-4">
+            <div class="main-image-box border rounded bg-light p-3 mb-3 text-center">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop" id="mainImage" class="img-fluid rounded" alt="Giày chạy bộ">
+            </div>
+            <div class="thumbnail-gallery d-flex gap-2 overflow-auto pb-2">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=200&auto=format&fit=crop" class="thumb-img active rounded border" alt="Góc 1">
+                <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=200&auto=format&fit=crop" class="thumb-img rounded border" alt="Góc 2">
+                <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?q=80&w=200&auto=format&fit=crop" class="thumb-img rounded border" alt="Góc 3">
+            </div>
+        </div>
+
+        <div class="col-lg-5 col-md-6">
+            <div class="product-info-box ps-lg-4">
+                <p class="text-uppercase fw-bold text-danger mb-1" style="letter-spacing: 1px;">Nike Running</p>
+                <h1 class="product-title fw-bolder mb-3">Giày Chạy Bộ Nam Nike Air Zoom Pegasus 40</h1>
+                
+                <div class="product-price-block mb-4">
+                    <span class="fs-2 fw-bold text-dark">3,500,000 ₫</span>
+                    <span class="text-decoration-line-through text-muted ms-2 fs-5">4,200,000 ₫</span>
+                    <span class="badge bg-danger ms-2 align-top mt-1">-16%</span>
+                </div>
+
+                <div class="color-selector mb-4">
+                    <p class="fw-bold mb-2">Màu sắc: <span id="selectedColorName" class="text-muted fw-normal">Đen/Trắng</span></p>
+                    <div class="d-flex gap-2">
+                        <input type="radio" name="colorOption" id="color1" class="d-none" checked>
+                        <label for="color1" class="color-swatch border rounded-circle active" style="background-color: #222;"></label>
+                        
+                        <input type="radio" name="colorOption" id="color2" class="d-none">
+                        <label for="color2" class="color-swatch border rounded-circle" style="background-color: #fff;"></label>
+                        
+                        <input type="radio" name="colorOption" id="color3" class="d-none">
+                        <label for="color3" class="color-swatch border rounded-circle" style="background-color: #0d6efd;"></label>
+                    </div>
+                </div>
+
+                <div class="size-selector mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <p class="fw-bold mb-0">Kích cỡ (Size)</p>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <input type="radio" name="sizeOption" id="size40" class="d-none">
+                        <label for="size40" class="size-btn border rounded text-center fw-bold">40</label>
+
+                        <input type="radio" name="sizeOption" id="size41" class="d-none" checked>
+                        <label for="size41" class="size-btn border rounded text-center fw-bold">41</label>
+
+                        <input type="radio" name="sizeOption" id="size42" class="d-none">
+                        <label for="size42" class="size-btn border rounded text-center fw-bold">42</label>
+
+                        <input type="radio" name="sizeOption" id="size43" class="d-none" disabled>
+                        <label for="size43" class="size-btn border rounded text-center fw-bold disabled-size">43</label>
+                    </div>
+                </div>
+
+                <div class="action-buttons d-flex gap-3 mt-5">
+                    <button class="btn btn-outline-dark btn-lg flex-grow-1 fw-bold text-uppercase rounded-0 py-3">
+                        <i class="fa-solid fa-cart-plus me-2"></i> Thêm vào giỏ
+                    </button>
+                    <button class="btn btn-danger btn-lg flex-grow-1 fw-bold text-uppercase rounded-0 py-3">
+                        Mua Ngay
+                    </button>
+                </div>
+                
+                <hr class="my-5">
+                
+                <div class="product-description">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-dumbbell me-2 text-danger"></i> Thông tin nổi bật</h5>
+                    <ul class="text-muted" style="line-height: 1.8;">
+                        <li>Lưới đệm êm ái, thoáng khí cực tốt cho những buổi tập cường độ cao.</li>
+                        <li>Đế bám đường siêu đỉnh, chống trơn trượt hoàn hảo.</li>
+                        <li>Hỗ trợ tối đa lực đẩy, giúp tiết kiệm sức lực khi chạy đường dài.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

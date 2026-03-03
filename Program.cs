@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // 1. ĐĂNG KÝ KẾT NỐI DATABASE
 // ==========================================
 // Register both the legacy `BanhangdbContext` (compat wrapper) and the scaffolded `FashionEcommerceDbContext` so DI resolves either type.
-var connectionString = "Server=.\\SQLEXPRESS;Database=Wed_Banhang;Trusted_Connection=True;TrustServerCertificate=True;";
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<FashionEcommerceDbContext>(options =>
     options.UseSqlServer(connectionString));
 
